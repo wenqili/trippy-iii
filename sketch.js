@@ -44,6 +44,10 @@ function preload() {
 
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowWidth * (9/16));
+}
+
 
 function setup() {
     // voice control
@@ -52,7 +56,9 @@ function setup() {
     // mic.stop();
 
     //canvas
-    canvas = createCanvas(1280, 800);
+    canvas = createCanvas(windowWidth, windowHeight* (9/16));
+    // canvas.style("width","100%");
+    // canvas.style("height","100%");
 
     //square array
     for (var i = 0; i < squareNum; i++) {
@@ -94,9 +100,10 @@ function draw() {
         //draw playground
         push();
         translate(width / 2, height / 2);
-        //draw squares
+
+        //draw ellipses
         for (var i = 0; i < squareNum; i++) {
-            rectMode(CENTER);
+            ellipseMode(CENTER);
             fill(squares[i].col);
             // noStroke();
 
